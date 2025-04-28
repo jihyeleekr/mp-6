@@ -11,15 +11,16 @@ export async function GET(req: Request) {
             return NextResponse.json({ error: 'Authorization code missing' }, { status: 400 });
         }
 
+        const params = new URLSearchParams();
+        params.append('grant_type', 'authorization_code');
+        params.append('code', code);
+        params.append('redirect_uri', process.env.LINKEDIN_REDIRECT_URI!);
+        params.append('client_id', process.env.LINKEDIN_CLIENT_ID!);
+        params.append('client_secret', process.env.LINKEDIN_CLIENT_SECRET!);
+
         const tokenResponse = await axios.post(
             'https://www.linkedin.com/oauth/v2/accessToken',
-            new URLSearchParams({
-                grant_type: 'authorization_code',
-                code: code,
-                redirect_uri: process.env.LINKEDIN_REDIRECT_URI!,
-                client_id: process.env.LINKEDIN_CLIENT_ID!,
-                client_secret: process.env.LINKEDIN_CLIENT_SECRET!,
-            }),
+            params,
             {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
