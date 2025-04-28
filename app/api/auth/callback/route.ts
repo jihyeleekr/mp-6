@@ -22,7 +22,7 @@ export async function GET(req: Request) {
             }),
             {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',  
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
             }
         );
@@ -33,7 +33,7 @@ export async function GET(req: Request) {
         response.cookies.set('token', access_token, { httpOnly: true, path: '/', maxAge: 60 * 60 * 24 });
 
         return response;
-    } catch (error: any) {
+    } catch (error) {
         if (axios.isAxiosError(error)) {
             console.error('OAuth callback Axios error:', error.response?.data || error.message);
         } else {
