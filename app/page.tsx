@@ -2,9 +2,6 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 export default async function HomePage() {
-    const cookieStore = await cookies();
-    const token = cookieStore.get('token')?.value;
-
     return (
         <main className="flex flex-col items-center justify-center min-h-screen bg-purple-50">
             <h1 className="text-4xl font-bold mb-4">OAuth Demo</h1>
