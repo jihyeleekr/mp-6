@@ -37,9 +37,9 @@ export default async function HomePage() {
                     )}
 
                     <div className="text-center">
-                        <h2 className="text-xl font-semibold">{user.name}</h2>
-                        <p className="text-gray-700">{user.id}</p>
-                        <p className="text-gray-700">{user.email}</p>
+                        <h2 className="text-xl font-semibold">Name: {user.name}</h2>
+                        <p className="text-gray-700">ID: {user.id}</p>
+                        <p className="text-gray-700">Email: {user.email}</p>
                         <p className="text-gray-500 mt-2 text-sm">Signed in with: LinkedIn</p>
                     </div>
 
@@ -50,7 +50,7 @@ export default async function HomePage() {
             </main>
         );
     } catch (error) {
-        console.error('fetch user profile failed:', error);
+        console.error('Failed to fetch user profile:', error);
         return (
             <main className="flex flex-col items-center justify-center min-h-screen">
                 <h1 className="text-2xl font-bold text-red-600">Error loading profile</h1>

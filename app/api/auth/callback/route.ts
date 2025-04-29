@@ -30,7 +30,7 @@ export async function GET(req: Request) {
 
         const { access_token } = tokenResponse.data;
 
-        const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/`);
+        const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/home`);
         response.cookies.set('token', access_token, { httpOnly: true, path: '/', maxAge: 60 * 60 * 24 });
 
         return response;
